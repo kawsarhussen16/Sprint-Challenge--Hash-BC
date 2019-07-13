@@ -7,17 +7,22 @@ from hashtables import (HashTable,
 
 
 def get_indices_of_item_weights(weights, length, limit):
-    ht = HashTable(16)
-
-    """
-    YOUR CODE HERE
-    """
-
+    ht = {}
+    for i in range(length):
+        weight = weights[i]
+        complement = limit - weight
+        if complement in ht:
+            return [i, ht[complement]]
+        else:
+            ht[weight] = i
     return None
 
 
 def print_answer(answer):
-    if answer is None:
+    if answer is not None:
         print(str(answer[0] + " " + answer[1]))
     else:
         print("None")
+
+weights_4 = [12, 6, 7, 14, 19, 3, 0, 25, 40]
+print(get_indices_of_item_weights(weights_4, 9, 7))
